@@ -3,6 +3,6 @@ from selenium.webdriver.common.by import By
 
 
 class Page:
-    def __init__(self, driver : webdriver):
-        self.DRIVER = driver
+    def __init__(self, browser : webdriver):
+        self.BROWSER = browser
 

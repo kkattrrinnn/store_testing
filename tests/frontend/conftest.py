@@ -1,14 +1,28 @@
 import pytest
-from tools.frontend.pages.driver import Driver
+from tools.frontend.driver import Driver
 
 
-@pytest.fixture(autouse=True)
-def create_driver(request):
+driver = None
 
-    def finalizer():
-        driver.BROWSER.close()
 
-    request.addfinalizer(finalizer)
-
+@pytest.fixture(autouse=False)
+def create_driver():
+    global driver
     driver = Driver()
     return driver
+
+
+@pytest.fixture(autouse=False)
+def get_driver():
+    global driver
+    return driver
+
+
+@pytest.fixture(autouse=False)
+def destroy_driver(request):
+    global driver
+
+    def finalizer():
+        driver.Close()
+
+    request.addfinalizer(finalizer)
