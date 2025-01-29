@@ -47,8 +47,8 @@ class TestProductOrder:
 
         # add first product to cart
         bmw_page = BMWPage(browser)
-        current_price = bmw_page.GetPriceInt()
-        current_article = bmw_page.GetArticleInt()
+        current_price = bmw_page.GetPrice()
+        current_article = bmw_page.GetArticle()
         bmw_page.ClickButtonAddToCart()
 
         url_changed_to_desired = (WebDriverWait(browser, 10).until
@@ -57,10 +57,10 @@ class TestProductOrder:
 
         # check if price is actual
         cart_page = CartPage(browser)
-        assert cart_page.GetPriceInt() == current_price
+        assert cart_page.GetPrice() == current_price
 
         # check if article is actual
-        assert cart_page.GetArticleInt() == current_article
+        assert cart_page.GetArticle() == current_article
 
         # place an order
         cart_page.CLickButtonPlaceOrder()

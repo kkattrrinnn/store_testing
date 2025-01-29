@@ -12,12 +12,12 @@ class CartCheckoutPage(Page):
         self.TEXT_PRICE = browser.find_element(By.XPATH, "//span[@class='uc-price']")
         self.BUTTON_SEND_ORDER = browser.find_element(By.XPATH, "//input[@id='edit-continue']")
 
-    def GetPriceInt(self):
+    def GetPrice(self):
         temp_list = self.TEXT_PRICE.text.split()
         price_int = temp_list[0]
         return price_int
 
-    def GetArticleInt(self):
+    def GetArticle(self):
         temp_list = self.TEXT_DESCRIPTION.text.split()
         article_int = temp_list[0]
         return article_int

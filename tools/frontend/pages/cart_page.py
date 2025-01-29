@@ -17,12 +17,12 @@ class CartPage(Page):
         self.TEXT_PRICE = browser.find_element(By.XPATH, "//td[@class='desc']/div[3]")
         self.NAME_OF_PRODUCT = browser.find_element(By.XPATH, "//td[@class='desc']/div")
 
-    def GetPriceInt(self):
+    def GetPrice(self):
         temp_list = self.TEXT_PRICE.text.split()
         price_int = temp_list[0]
         return price_int
 
-    def GetArticleInt(self):
+    def GetArticle(self):
         temp_list = self.NAME_OF_PRODUCT.text.split()
         article_int = temp_list[0]
         return article_int
